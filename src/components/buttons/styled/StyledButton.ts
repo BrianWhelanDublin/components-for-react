@@ -1,0 +1,108 @@
+import styled, {
+  css,
+  DefaultTheme,
+  FlattenSimpleInterpolation,
+  ThemeProps,
+} from 'styled-components';
+import { defaultTheme } from '../../theme/elements/theme';
+
+import { ButtonProps } from '../types/Button.types';
+
+const setColor = (props: ButtonProps & ThemeProps<DefaultTheme>) => {
+  let styles: FlattenSimpleInterpolation;
+
+  let varient: 'primary' | 'secondary' | 'danger' | 'tertiary';
+
+  if (props.danger) {
+    varient = 'danger';
+  } else {
+    varient = props?.varient ?? 'primary';
+  }
+
+  let background = props?.filled
+    ? (props?.theme?.colors?.[varient]?.main as string)
+    : 'inherit';
+
+  let borderColor = props?.theme?.colors?.[varient]?.main;
+  let hoverColour = props?.theme?.colors?.[varient]?.dark;
+  let color = props?.filled
+    ? props.theme?.colors?.singleTone?.lightText
+    : props?.theme?.colors?.text?.primary;
+
+  styles = css`
+    background: ${background};
+    border-color: ${borderColor};
+    color: ${color};
+
+    &:hover:not([disabled]) {
+      background: ${props?.filled ? hoverColour : 'transparent'};
+      border-color: ${hoverColour};
+    }
+  `;
+
+  return styles;
+};
+
+const setSize = (props: ButtonProps & ThemeProps<DefaultTheme>) => {
+  let styles: FlattenSimpleInterpolation;
+  let padding: string;
+  let fontSize: string;
+
+  if (props.size === 'small') {
+    fontSize = `${props?.theme?.typography?.fontSize as number}px `;
+    padding = '8px 10px ';
+  } else if (props.size === 'medium') {
+    fontSize = `${(props?.theme?.typography?.fontSize as number) + 2}px `;
+    padding = '12px 14px';
+  } else {
+    fontSize = `${(props?.theme?.typography?.fontSize as number) + 4}px `;
+    padding = '12px 16px';
+  }
+
+  styles = css`
+    padding: ${padding};
+    font-size: ${fontSize};
+  `;
+
+  return styles;
+};
+
+export const StyledButton = styled.button.attrs<ButtonProps>((props) => ({
+  type: props.type || 'button',
+}))<ButtonProps>`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  margin: 0;
+  transition: border-color 0.25s ease-in-out, box-shadow 0.1s ease-in-out,
+    background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+  border-radius: ${(props) => (props.pill ? '25px' : '5px')};
+  margin: 0;
+  cursor: pointer;
+  width: ${(props) => (props.fullWidth ? '100%' : '')};
+  overflow: hidden;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: ${(props) => props?.theme?.typography?.fontFamily};
+  font-weight: ${(props) => props?.theme?.typography?.fontWeightMedium};
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    cursor: default;
+    background: ${(props) => props?.theme?.colors?.grey?.[50]};
+    color: ${(props) => props?.theme?.colors?.text?.disabled};
+    border: ${(props) => props?.theme?.colors?.text?.disabled};
+  }
+
+  ${(props) => setSize(props)}
+  ${(props) => setColor(props)}
+`;
+
+StyledButton.defaultProps = {
+  theme: defaultTheme,
+};
