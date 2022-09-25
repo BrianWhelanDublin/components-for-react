@@ -23,13 +23,13 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: Format
-        run: yarn format
+        run: npm run format
 
       - name: Lint
-        run: yarn lint
+        run: npm run lint
 
       - name: Test
-        run: yarn test --ci --coverage --maxWorkers=2
+        run: npm run test --ci --coverage --maxWorkers=2
 
       - name: Build
-        run: yarn build
+        run: npm run build
