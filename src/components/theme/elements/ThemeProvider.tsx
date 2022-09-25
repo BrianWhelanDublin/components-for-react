@@ -1,6 +1,7 @@
 import React from 'react';
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 import { defaultTheme } from './theme';
+import merge from 'deepmerge';
 
 interface ComponentsThemeProviderProps {
   theme: DefaultTheme;
@@ -12,9 +13,7 @@ const ComponentsThemeProvider: React.FC<ComponentsThemeProviderProps> = ({
   children,
 }) => {
   return (
-    <ThemeProvider theme={Object.assign({}, defaultTheme, theme)}>
-      {children}
-    </ThemeProvider>
+    <ThemeProvider theme={merge(defaultTheme, theme)}>{children}</ThemeProvider>
   );
 };
 
