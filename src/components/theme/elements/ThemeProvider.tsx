@@ -9,7 +9,7 @@ interface ComponentsThemeProviderProps {
 }
 
 const ComponentsThemeProvider: React.FC<ComponentsThemeProviderProps> = ({
-  theme,
+  theme = {},
   children,
 }) => {
   return (
