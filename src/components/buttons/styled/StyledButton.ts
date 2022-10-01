@@ -4,30 +4,23 @@ import styled, {
   FlattenSimpleInterpolation,
   ThemeProps,
 } from 'styled-components';
-import { defaultTheme } from '../../theme/elements/theme';
 
 import { ButtonProps } from '../types/Button.types';
 
 const setColor = (props: ButtonProps & ThemeProps<DefaultTheme>) => {
   let styles: FlattenSimpleInterpolation;
 
-  let varient: 'primary' | 'secondary' | 'danger' | 'tertiary';
-
-  if (props.danger) {
-    varient = 'danger';
-  } else {
-    varient = props?.varient ?? 'primary';
-  }
+  let buttonColor = props?.color ?? 'primary';
 
   let background = props?.filled
-    ? (props?.theme?.colors?.[varient]?.main as string)
+    ? (props?.theme?.colors?.[buttonColor]?.main as string)
     : 'inherit';
 
-  let borderColor = props?.theme?.colors?.[varient]?.main;
-  let hoverColour = props?.theme?.colors?.[varient]?.dark;
+  let borderColor = props?.theme?.colors?.[buttonColor]?.main;
+  let hoverColour = props?.theme?.colors?.[buttonColor]?.dark;
   let color = props?.filled
     ? props.theme?.colors?.singleTone?.lightText
-    : props?.theme?.colors?.text?.primary;
+    : props?.theme?.colors?.[buttonColor]?.main;
 
   styles = css`
     background: ${background};
@@ -50,18 +43,48 @@ const setSize = (props: ButtonProps & ThemeProps<DefaultTheme>) => {
 
   if (props.size === 'small') {
     fontSize = `${props?.theme?.typography?.fontSize as number}px `;
-    padding = '8px 10px ';
+    padding = '8px 14px ';
   } else if (props.size === 'medium') {
     fontSize = `${(props?.theme?.typography?.fontSize as number) + 2}px `;
-    padding = '12px 14px';
+    padding = '10px 20px';
   } else {
     fontSize = `${(props?.theme?.typography?.fontSize as number) + 4}px `;
-    padding = '12px 16px';
+    padding = '12px 28px';
   }
 
   styles = css`
     padding: ${padding};
     font-size: ${fontSize};
+  `;
+
+  return styles;
+};
+
+const setRadius = (props: ButtonProps & ThemeProps<DefaultTheme>) => {
+  let styles: FlattenSimpleInterpolation;
+  let radius: string;
+  if (props?.square) {
+    radius = '0';
+  } else {
+    props?.pill ? (radius = '24px') : (radius = '4px');
+  }
+
+  styles = css`
+    border-radius: ${radius};
+  `;
+  return styles;
+};
+
+const setShadows = (props: ButtonProps & ThemeProps<DefaultTheme>) => {
+  let styles: FlattenSimpleInterpolation;
+  let shadow: string = 'none';
+  if (props.shadow) {
+    const shadowObject = props?.theme?.shadows?.[props.shadow];
+    shadow = `${shadowObject?.shadowOffset?.x}px ${shadowObject?.shadowOffset?.x}px ${shadowObject?.shadowRadius}px ${shadowObject?.shadowColor}`;
+  }
+
+  styles = css`
+    box-shadow: ${shadow};
   `;
 
   return styles;
@@ -73,11 +96,11 @@ export const StyledButton = styled.button.attrs<ButtonProps>((props) => ({
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid transparent;
+  border: ${(props) => (props?.borderLess ? 'none' : '1px solid transparent')};
   margin: 0;
   transition: border-color 0.25s ease-in-out, box-shadow 0.1s ease-in-out,
     background-color 0.25s ease-in-out, color 0.25s ease-in-out;
-  border-radius: ${(props) => (props.pill ? '25px' : '5px')};
+
   margin: 0;
   cursor: pointer;
   width: ${(props) => (props.fullWidth ? '100%' : '')};
@@ -101,8 +124,6 @@ export const StyledButton = styled.button.attrs<ButtonProps>((props) => ({
 
   ${(props) => setSize(props)}
   ${(props) => setColor(props)}
+  ${(props) => setRadius(props)}
+  ${(props) => setShadows(props)}
 `;
-
-StyledButton.defaultProps = {
-  theme: defaultTheme,
-};

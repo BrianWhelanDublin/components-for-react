@@ -45,12 +45,20 @@ export interface ThemeColors {
   info?: ThemeColor;
   success?: ThemeColor;
   error?: ThemeColor;
-  danger?: ThemeColor;
   warning?: ThemeColor;
   singleTone?: ThemeSingleTone;
   grey?: ThemeGrey;
   text?: ThemeTextColor;
 }
+
+export type Color =
+  | 'primary'
+  | 'secondary'
+  | 'tertiary'
+  | 'info'
+  | 'success'
+  | 'error'
+  | 'warning';
 
 export interface ThemeTypography {
   htmlFontSize?: number;
@@ -81,8 +89,8 @@ export interface ThemeOpacity {
 }
 
 export interface ThemeShadowOffset {
-  width?: number;
-  height?: number;
+  x?: number;
+  y?: number;
 }
 
 export interface ThemeShadow {
@@ -90,7 +98,6 @@ export interface ThemeShadow {
   shadowOffset?: ThemeShadowOffset;
   shadowOpacity?: number;
   shadowRadius?: number;
-  elevation?: number;
 }
 
 export interface ThemeShadows {
@@ -105,6 +112,7 @@ export interface ThemeShadows {
   8?: ThemeShadow;
   9?: ThemeShadow;
 }
+
 declare module 'styled-components' {
   export interface DefaultTheme {
     colors?: ThemeColors;

@@ -4,9 +4,9 @@ import { StyledButton } from '../styled/StyledButton';
 import { ButtonProps } from '../types/Button.types';
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ children, ...props }, ref) => {
+  ({ children, color = 'primary', size = 'medium', ...props }, ref) => {
     return (
-      <StyledButton ref={ref} {...props}>
+      <StyledButton color={color} size={size} ref={ref} {...props}>
         {children}
       </StyledButton>
     );

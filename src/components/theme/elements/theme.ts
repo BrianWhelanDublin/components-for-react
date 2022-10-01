@@ -8,9 +8,9 @@ import {
 
 export const colors: ThemeColors = {
   primary: {
-    light: '#67E8F9',
-    main: '#0891B2',
-    dark: '#164E63',
+    light: '#5f5fc4',
+    main: '#283593',
+    dark: '#001064',
   },
   secondary: {
     light: '#F9A8D4',
@@ -37,11 +37,7 @@ export const colors: ThemeColors = {
     main: '#dc2626',
     dark: '#7f1d1d',
   },
-  danger: {
-    light: '#fda4af',
-    main: '#e11d48',
-    dark: '#881337',
-  },
+
   warning: {
     light: '#fdba74',
     main: '#ea580c',
@@ -62,7 +58,7 @@ export const colors: ThemeColors = {
     500: '#737373',
     600: '#525252',
     700: '#404040',
-    800: '##262626',
+    800: '#262626',
     900: '#171717',
   },
   text: {
@@ -79,7 +75,7 @@ export const typography: ThemeTypography = {
   fontWeightRegular: 400,
   fontWeightMedium: 500,
   fontWeightBold: 700,
-  fontFamily: 'inherit',
+  fontFamily: 'Helvetica',
 };
 
 export const opacity: ThemeOpacity = {
@@ -102,104 +98,84 @@ export const opacity: ThemeOpacity = {
 
 export const shadows: ThemeShadows = {
   0: {
-    shadowColor: '#000',
+    shadowColor: 'rgba(0,0,0,.18)',
     shadowOffset: {
-      width: 0,
-      height: 1,
+      x: 1,
+      y: 1,
     },
-    shadowOpacity: 0.18,
-    shadowRadius: 1.0,
-    elevation: 1,
+    shadowRadius: 1,
   },
   1: {
-    shadowColor: '#000',
+    shadowColor: 'rgba(0,0,0,.2)',
     shadowOffset: {
-      width: 0,
-      height: 1,
+      x: 1,
+      y: 2,
     },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
-    elevation: 2,
+    shadowRadius: 2,
   },
   2: {
-    shadowColor: '#000',
+    shadowColor: 'rgba(0,0,0,.22)',
     shadowOffset: {
-      width: 0,
-      height: 1,
+      x: 2,
+      y: 2,
     },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
+    shadowRadius: 4,
   },
   3: {
-    shadowColor: '#000',
+    shadowColor: 'rgba(0,0,0,.23)',
     shadowOffset: {
-      width: 0,
-      height: 2,
+      x: 3,
+      y: 6,
     },
-    shadowOpacity: 0.23,
-    shadowRadius: 2.62,
-    elevation: 4,
+    shadowRadius: 6,
   },
   4: {
-    shadowColor: '#000',
+    shadowColor: 'rgba(0,0,0,.25)',
     shadowOffset: {
-      width: 0,
-      height: 2,
+      x: 4,
+      y: 8,
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
+    shadowRadius: 8,
   },
   5: {
-    shadowColor: '#000',
+    shadowColor: 'rgba(0,0,0,.27)',
     shadowOffset: {
-      width: 0,
-      height: 3,
+      x: 5,
+      y: 10,
     },
-    shadowOpacity: 0.27,
-    shadowRadius: 4.65,
-    elevation: 6,
+    shadowRadius: 10,
   },
   6: {
-    shadowColor: '#000',
+    shadowColor: 'rgba(0,0,0,.29)',
     shadowOffset: {
-      width: 0,
-      height: 3,
+      x: 6,
+      y: 12,
     },
-    shadowOpacity: 0.29,
-    shadowRadius: 4.65,
-    elevation: 7,
+    shadowRadius: 12,
   },
   7: {
-    shadowColor: '#000',
+    shadowColor: 'rgba(0,0,0,.3)',
     shadowOffset: {
-      width: 0,
-      height: 4,
+      x: 7,
+      y: 14,
     },
-    shadowOpacity: 0.3,
-    shadowRadius: 4.65,
-    elevation: 8,
+    shadowRadius: 14,
   },
   8: {
-    shadowColor: '#000',
+    shadowColor: 'rgba(0,0,0,.32)',
     shadowOffset: {
-      width: 0,
-      height: 4,
+      x: 8,
+      y: 16,
     },
-    shadowOpacity: 0.32,
-    shadowRadius: 5.46,
-    elevation: 9,
+    shadowRadius: 16,
   },
   9: {
-    shadowColor: '#000',
+    shadowColor: 'rgba(0,0,0,.34)',
     shadowOffset: {
-      width: 0,
-      height: 5,
+      x: 9,
+      y: 18,
     },
-    shadowOpacity: 0.34,
-    shadowRadius: 6.27,
-    elevation: 10,
+    shadowRadius: 18,
   },
 };
 
