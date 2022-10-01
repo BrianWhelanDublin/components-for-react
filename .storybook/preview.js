@@ -9,6 +9,7 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  layout: 'padded',
 };
 
 export const decorators = [

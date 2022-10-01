@@ -1,0 +1,165 @@
+<!-- Colors.stories.mdx -->
+
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs';
+
+<Meta title="Colors" />
+
+# Theme Colours
+
+The default theme colours
+
+<ColorPalette>
+  <ColorItem
+    title="theme.color.grey"
+    subtitle="Some of the greys"
+    colors={{
+      50: '#fafafa',
+      100: '#f5f5f5',
+      200: '#e5e5e5',
+      300: '#d4d4d4',
+      400: '#a3a3a3',
+      500: '#737373',
+      600: '#525252',
+      700: '#404040',
+      800: '#262626',
+      900: '#171717',
+    }}
+  />
+  <ColorItem
+    title="theme.colors.primary"
+    subtitle="Primary"
+    colors={{ light: '#5472d3', main: '#0d47a1', dark: '#002171' }}
+  />
+  <ColorItem
+    title="theme.color.secondary"
+    subtitle="Secondary"
+    colors={{ light: '#7c43bd', main: '#4a148c', dark: '#12005e' }}
+  />
+  <ColorItem
+    title="theme.color.tertiary"
+    subtitle="Tertiary"
+    colors={{ light: '#7de594', main: '#49b265', dark: '#008139' }}
+  />
+  <ColorItem
+    title="theme.color.info"
+    subtitle="Info"
+    colors={{ light: '#6ec6ff', main: '#2196f3', dark: '#0069c0' }}
+  />
+  <ColorItem
+    title="theme.color.success"
+    subtitle="Success"
+    colors={{ light: '#5fee5d', main: '#0dba2a', dark: '#008800' }}
+  />
+  <ColorItem
+    title="theme.color.error"
+    subtitle="Error"
+    colors={{ light: '#ff6659', main: '#d32f2f', dark: '#9a0007' }}
+  />
+
+  <ColorItem
+    title="theme.color.warning"
+    subtitle="Warning"
+    colors={{ light: '#ff513c', main: '#d30011', dark: '#990000' }}
+  />
+  <ColorItem
+    title="theme.color.singleTone"
+    subtitle="SingleTone"
+    colors={{
+      white: '#ffffff',
+      black: '#000000',
+      lightText: '#ffffff',
+      darkText: '#27272a',
+    }}
+  />
+</ColorPalette>
+
+# Theme colours and editing
+
+Theme color object is build as below
+
+```typescript
+defaultTheme = {
+    colors:{
+      primary:{
+        light?: string;
+        main?: string;
+        dark?: string;
+      },
+      secondary:{
+        light?: string;
+        main?: string;
+        dark?: string;
+      },
+      tertiary:{
+        light?: string;
+        main?: string;
+        dark?: string;
+      },
+      info:{
+        light?: string;
+        main?: string;
+        dark?: string;
+      },
+      success:{
+        light?: string;
+        main?: string;
+        dark?: string;
+      },
+      error:{
+        light?: string;
+        main?: string;
+        dark?: string;
+      },
+      warning:{
+        light?: string;
+        main?: string;
+        dark?: string;
+      },
+      singleTone:{
+        white?: string;
+        black?: string;
+        lightText?: string;
+        darkText?: string;
+      },
+      grey:{
+        50?: string;
+        100?: string;
+        200?: string;
+        300?: string;
+        400?: string;
+        500?: string;
+        600?: string;
+        700?: string;
+        800?: string;
+        900?: string;
+      }
+    }
+  }
+```
+
+To edit the colours import the ComponentsThemeProvider wrap your app with it and add your new theme as a props,
+the new colours will be merged with the default theme only replacing the colours you've defined in your new theme
+
+In the below example the primary colours have been edited
+
+```jsx
+function App() {
+  const theme = {
+    colors: {
+      primary: {
+        light: 'lightred',
+        main: 'red',
+        dark: 'darkred',
+      },
+    },
+  };
+
+  return (
+    <div>
+      <ComponentsThemeProvider theme="theme">
+        ... app components
+      </ComponentsThemeProvider>
+    </div>
+  );
+}
+```

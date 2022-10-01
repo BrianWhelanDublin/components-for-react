@@ -15,7 +15,7 @@ describe('Running Test for Button', () => {
   test('Danger', () => {
     const button = renderer
       .create(
-        <Button filled danger>
+        <Button filled color="danger">
           Click
         </Button>
       )
