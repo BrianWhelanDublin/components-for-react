@@ -13,7 +13,7 @@
   "scripts": {
     "build": "rollup -c",
     "format": "prettier --write .",
-    "test": "jest",
+    "test": "jest -u",
     "lint": "prettier --check .",
     "prepare": "rollup -c",
     "size": "size-limit",
