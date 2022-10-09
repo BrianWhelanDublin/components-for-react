@@ -15,7 +15,7 @@ describe('Running Test for Button', () => {
   test('Danger', () => {
     const button = renderer
       .create(
-        <Button filled color="danger">
+        <Button filled color="warning">
           Click
         </Button>
       )
@@ -23,7 +23,7 @@ describe('Running Test for Button', () => {
 
     expect(button).toHaveStyleRule(
       'background',
-      defaultTheme.colors?.danger?.main
+      defaultTheme.colors?.warning?.main
     );
   });
 });
