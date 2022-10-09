@@ -43,7 +43,7 @@ const setSize = (props: ButtonProps & ThemeProps<DefaultTheme>) => {
 
   if (props.size === 'small') {
     fontSize = `${props?.theme?.typography?.fontSize as number}px `;
-    padding = '8px 14px ';
+    padding = '8px 14px';
   } else if (props.size === 'medium') {
     fontSize = `${(props?.theme?.typography?.fontSize as number) + 2}px `;
     padding = '10px 20px';
