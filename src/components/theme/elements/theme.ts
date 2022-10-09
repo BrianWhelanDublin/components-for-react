@@ -8,40 +8,40 @@ import {
 
 export const colors: ThemeColors = {
   primary: {
-    light: '#5f5fc4',
-    main: '#283593',
-    dark: '#001064',
+    light: '#115DD0',
+    main: '#0D47A1',
+    dark: '#0B3B84',
   },
   secondary: {
-    light: '#F9A8D4',
-    main: '#DB2777',
-    dark: '#831843',
+    light: '#2CB5A7',
+    main: '#21897E',
+    dark: '#1C736A',
   },
   tertiary: {
-    light: '#6EE7B7',
-    main: '#059669',
-    dark: '#064E3B',
+    light: '#C397B0',
+    main: '#AF7595',
+    dark: '#A66488',
   },
   info: {
-    light: '#7dd3fc',
-    main: '#0284c7',
-    dark: '#0c4a6e',
+    light: '#48C3D5',
+    main: '#2DB3C8',
+    dark: '#2695A6',
   },
   success: {
-    light: '#86efac',
-    main: '#16a34a',
-    dark: '#14532d',
+    light: '#20D59C',
+    main: '#19A97B',
+    dark: '#158E68',
   },
   error: {
-    light: '#fca5a5',
-    main: '#dc2626',
-    dark: '#7f1d1d',
+    light: '#E0526c',
+    main: '#DA2C4C',
+    dark: '#BF223E',
   },
 
   warning: {
-    light: '#fdba74',
-    main: '#ea580c',
-    dark: '#7c2d12',
+    light: '#FDCA5E',
+    main: '#FCBD36',
+    dark: '#FBB00E',
   },
   singleTone: {
     white: '#ffffff',
