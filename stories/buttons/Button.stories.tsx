@@ -4,11 +4,22 @@ import React from 'react';
 import Button from '../../src/components/buttons/elements/Button';
 import { ButtonProps } from '../../src/components/buttons/types/Button.types';
 import { Color } from '../../src/components/theme/types/theme';
+import { colors } from '../../src/components/theme/elements/theme';
 import mdx from './Button.mdx';
 
 export default {
   title: 'Components/Button',
   component: Button,
+  argTypes: {
+    color: {
+      options: [
+        ...Object.keys(colors).filter(
+          (el) => el !== 'singleTone' && el !== 'grey' && el !== 'text'
+        ),
+      ],
+      control: { type: 'select' },
+    },
+  },
 
   parameters: {
     docs: {
