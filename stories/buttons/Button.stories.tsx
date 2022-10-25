@@ -5,6 +5,7 @@ import Button from '../../src/components/buttons/elements/Button';
 import { ButtonProps } from '../../src/components/buttons/types/Button.types';
 import { Color } from '../../src/components/theme/types/theme';
 import { colors } from '../../src/components/theme/elements/theme';
+import { SIZE } from '../../src/components/buttons/types/Button.types';
 import mdx from './Button.mdx';
 
 export default {
@@ -65,17 +66,14 @@ export const Disabled: ComponentStory<typeof Button> = (args) => (
 export const Sizes: ComponentStory<typeof Button> = (args) => {
   return (
     <>
-      <Button size="small" {...args}>
-        Click Me
-      </Button>
-      &nbsp; &nbsp;
-      <Button size="medium" {...args}>
-        Click Me
-      </Button>
-      &nbsp; &nbsp;
-      <Button size="large" {...args}>
-        Click Me
-      </Button>
+      {SIZE.map((el) => (
+        <React.Fragment key={`button-${el}`}>
+          <Button size={el} {...args}>
+            Click Me
+          </Button>
+          &nbsp; &nbsp;
+        </React.Fragment>
+      ))}
     </>
   );
 };
@@ -117,6 +115,10 @@ const ButtonRow: React.FC<ButtonRowProps> = ({ args, text, color }) => {
 };
 
 export const Colors: ComponentStory<typeof Button> = (args) => {
+  const buttonColors = Object.keys(colors).filter(
+    (el) => el !== 'singleTone' && el !== 'grey' && el !== 'text'
+  );
+
   return (
     <div
       style={{
@@ -125,13 +127,14 @@ export const Colors: ComponentStory<typeof Button> = (args) => {
         gap: '20px',
       }}
     >
-      <ButtonRow color="primary" text={'Primary'} args={args} />
-      <ButtonRow color="secondary" text={'Secondary'} args={args} />
-      <ButtonRow color="tertiary" text={'Tertiary'} args={args} />
-      <ButtonRow color="info" text={'Info'} args={args} />
-      <ButtonRow color="success" text={'Success'} args={args} />
-      <ButtonRow color="error" text={'Error'} args={args} />
-      <ButtonRow color="warning" text={'Warning'} args={args} />
+      {buttonColors.map((el) => (
+        <ButtonRow
+          key={`button-${el}`}
+          color={el as Color}
+          text={el}
+          args={args}
+        />
+      ))}
     </div>
   );
 };
