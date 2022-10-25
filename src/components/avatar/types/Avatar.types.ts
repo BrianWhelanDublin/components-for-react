@@ -14,7 +14,7 @@ export interface AvatarProps extends HTMLAttributes<HTMLElement> {
   /** status shows if the user is away or active */
   status?: 'away' | 'active';
 
-  /** backgroundColour pick the background colour is theres no image */
+  /** backgroundColour pick the background colour if there is no image */
   backgroundColour?: Color;
 
   /** children sets the avatar content will work with an icon, initials or an image */
